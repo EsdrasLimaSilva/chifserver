@@ -16,18 +16,20 @@ import java.io.InputStream;
 public class FirebaseInitialization {
     @PostConstruct
     public void initialization() {
-        try {
-            InputStream serviceAccount = getClass().getResourceAsStream("/serviceAccountKey.json");
-            FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
-            // initializing firebase
-            FirebaseApp.initializeApp(options);
+        if(FirebaseApp.getApps().isEmpty()){
+            try {
+                InputStream serviceAccount = getClass().getResourceAsStream("/serviceAccountKey.json");
+                FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
+                // initializing firebase
+                FirebaseApp.initializeApp(options);
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ;
         }
-        ;
 
     }
 }
