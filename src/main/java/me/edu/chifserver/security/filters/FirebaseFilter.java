@@ -38,6 +38,9 @@ public class FirebaseFilter extends OncePerRequestFilter {
                 return;
             }
 
+            // setting id to the request
+            request.setAttribute("uid", firebaseToken.getUid());
+
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     firebaseToken.getUid(),
                     null,

@@ -19,7 +19,10 @@ public class FirebaseInitialization {
         if(FirebaseApp.getApps().isEmpty()){
             try {
                 InputStream serviceAccount = getClass().getResourceAsStream("/serviceAccountKey.json");
-                FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount)).build();
+                FirebaseOptions options = new FirebaseOptions.Builder()
+                        .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                        .setStorageBucket(System.getenv("FIREBASE_STORAGE_BUCKET") + ".appspot.com")
+                        .build();
                 // initializing firebase
                 FirebaseApp.initializeApp(options);
 
