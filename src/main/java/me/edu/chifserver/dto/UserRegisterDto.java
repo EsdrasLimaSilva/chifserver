@@ -7,9 +7,7 @@ public record UserRegisterDto(
         String name,
         @NotEmpty
         String username,
-        @NotEmpty
         String base64Profile,
-        @NotEmpty
         String base64Banner
 ) {
 }
