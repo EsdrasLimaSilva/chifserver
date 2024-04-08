@@ -1,6 +1,7 @@
 package me.edu.chifserver.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import me.edu.chifserver.model.User;
 
 public record UserDto (
         @NotEmpty

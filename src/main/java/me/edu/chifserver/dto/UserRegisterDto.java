@@ -8,6 +8,8 @@ public record UserRegisterDto(
         @NotEmpty
         String username,
         String base64Profile,
-        String base64Banner
+        String profileImgType,
+        String base64Banner,
+        String bannerImgType
 ) {
 }
